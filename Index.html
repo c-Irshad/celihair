@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Celi Hair | Salon de Coiffure Premium Marseille</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #111111;
+            --accent: #d4af37; /* Or Premium */
+            --bg-cream: #fbf9f6;
+            --text-dark: #222222;
+            --text-light: #777777;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--text-dark);
+            background-color: var(--bg-cream);
+            line-height: 1.7;
+        }
+
+        h1, h2, h3, .logo {
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        /* En-tête */
+        header {
+            background-color: rgba(17, 17, 17, 0.95);
+            padding: 25px 10%;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            backdrop-filter: blur(5px);
+        }
+
+        header .logo {
+            color: #fff;
+            font-size: 32px;
+            letter-spacing: 3px;
+            font-weight: 600;
+        }
+
+        header .logo span { color: var(--accent); }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin-left: 30px;
+            font-size: 13px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: color 0.3s;
+        }
+
+        nav a:hover { color: var(--accent); }
+
+        /* Hero Section */
+        .hero {
+            height: 90vh;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1522337360788-8b13edd793be?auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            text-align: center;
+            padding-top: 80px;
+        }
+
+        .hero h1 {
+            font-size: 65px;
+            margin-bottom: 15px;
+            letter-spacing: 4px;
+            font-weight: 400;
+        }
+
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 35px;
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            letter-spacing: 2px;
+        }
+
+        .btn-gold {
+            background-color: transparent;
+            color: var(--accent);
+            border: 1px solid var(--accent);
+            padding: 14px 35px;
+            text-decoration: none;
+            font-size: 12px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 600;
+            transition: all 0.4s ease;
+        }
+
+        .btn-gold:hover {
+            background-color: var(--accent);
+            color: var(--primary);
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+        }
+
+        /* Section Prestations */
+        .section-padding { padding: 100px 10%; }
+
+        .section-title {
+            text-align: center;
+            font-size: 45px;
+            margin-bottom: 60px;
+            letter-spacing: 2px;
+            font-weight: 400;
+        }
+
+        .section-title span {
+            display: block;
+            font-size: 14px;
+            font-family: 'Montserrat', sans-serif;
+            text-transform: uppercase;
+            color: var(--accent);
+            letter-spacing: 4px;
+            margin-bottom: 10px;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+        }
+
+        .category-box h3 {
+            font-size: 28px;
+            color: var(--primary);
+            border-bottom: 1px solid #e0e0e0;
+            padding-bottom: 10px;
+            margin-bottom: 25px;
+        }
+
+        .service-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 20px;
+        }
+
+        .service-name { font-weight: 400; font-size: 16px; }
+        .service-dots { flex-grow: 1; border-bottom: 1px dotted #ccc; margin: 0 15px; }
+        .service-price { font-weight: 600; color: var(--primary); }
+
+        /* Alerte Acompte */
+        .acompte-notice {
+            background-color: #f3ede4;
+            border-left: 3px solid var(--accent);
+            padding: 20px;
+            margin-top: 40px;
+            font-size: 14px;
+            color: #555;
+            text-align: center;
+        }
+
+        /* Galerie de photos intégrée */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .gallery-item {
+            height: 350px;
+            overflow: hidden;
+            border: 1px solid #eee;
+            position: relative;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img { transform: scale(1.08); }
+
+        /* Bloc Réservation / BDD / PayPal */
+        .booking-container {
+            background: #111;
+            color: #fff;
+            padding: 60px;
+            max-width: 800px;
+            margin: 0 auto;
+            border: 1px solid var(--accent);
+        }
+
+        .booking-form input, .booking-form select {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            background: #222;
+            border: 1px solid #444;
+            color: #fff;
+        }
+
+        /* Paypal Button Design */
+        .paypal-block {
+            margin-top: 30px;
+            padding: 20px;
+            background: #1a1a1a;
+            border: 1px dashed var(--accent);
+            text-align: center;
+        }
+
+        .btn-paypal {
+            background-color: #ffc439;
+            color: #011c6b;
+            padding: 12px 40px;
+            border: none;
+            border-radius: 25px;
+            font-weight: bold;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            margin-top: 15px;
+        }
+
+        /* Footer / Contact */
+        footer {
+            background-color: var(--primary);
+            color: #888;
+            padding: 60px 10% 20px;
+            text-align: center;
+            font-size: 14px;
+            border-top: 1px solid #222;
+        }
+
+        footer a { color: var(--accent); text-decoration: none; }
+
+        @media (max-width: 768px) {
+            .menu-grid { grid-template-columns: 1fr; }
+            header { flex-direction: column; gap: 15px; }
+            .hero h1 { font-size: 40px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">CELI <span>HAIR</span></div>
+        <nav>
+            <a href="#accueil">Accueil</a>
+            <a href="#tarifs">Prestations</a>
+            <a href="#galerie">Galerie</a>
+            <a href="#reservation">Rendez-vous</a>
+        </nav>
+    </header>
+
+    <section class="hero" id="accueil">
+        <h1>L'Expérience Celi Hair</h1>
+        <p>Haute Coiffure & Soins d'Exception à Marseille</p>
+        <a href="#reservation" class="btn-gold">Réserver un instant</a>
+    </section>
+
+    <section class="section-padding" id="tarifs">
+        <h2 class="section-title"><span>La Carte</span>Prestations & Tarifs</h2>
+        
+        <div class="menu-grid">
+            <div class="category-box">
+                <h3>Coupes & Styling</h3>
+                <div class="service-item"><span class="service-name">Coupe & Brushing Signature</span><span class="service-dots"></span><span class="service-price">55 €</span></div>
+                <div class="service-item"><span class="service-name">Brushing Haute Tenue</span><span class="service-dots"></span><span class="service-price">35 €</span></div>
+                <div class="service-item"><span class="service-name">Soin Rituel Profond</span><span class="service-dots"></span><span class="service-price">25 €</span></div>
+            </div>
+            <div class="category-box">
+                <h3>Techniques Signatures</h3>
+                <div class="service-item"><span class="service-name">Balayage / Ombré Sur-Mesure</span><span class="service-dots"></span><span class="service-price">120 €</span></div>
+                <div class="service-item"><span class="service-name">Coloration Éclat Racine</span><span class="service-dots"></span><span class="service-price">45 €</span></div>
+                <div class="service-item"><span class="service-name">Gloss / Patine Brillance</span><span class="service-dots"></span><span class="service-price">40 €</span></div>
+            </div>
+        </div>
+
+        <div class="acompte-notice">
+            ⚠️ <strong>Note importante :</strong> Toute demande de rendez-vous est traitée comme une pré-réservation. Votre créneau ne sera <strong>définitivement validé</strong> qu'après réception et versement d'un acompte.
+        </div>
+    </section>
+
+    <section class="section-padding" style="background-color: #fff;" id="galerie">
+        <h2 class="section-title"><span>Instagram</span>Les Créations @celi__hair</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1562322140-8baeececf3df?auto=format&fit=crop&w=500&q=80" alt="Coiffure Celi Hair"></div>
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1605497746444-ac9da5848ba7?auto=format&fit=crop&w=500&q=80" alt="Balayage Celi Hair"></div>
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?auto=format&fit=crop&w=500&q=80" alt="Soin Cheveux"></div>
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1492106087820-71f1a00d2b11?auto=format&fit=crop&w=500&q=80" alt="Modèle Cheveux"></div>
+        </div>
+    </section>
+
+    <section class="section-padding" id="reservation">
+        <h2 class="section-title"><span>Privé</span>Demande de Réservation</h2>
+        
+        <div class="booking-container">
+            <form id="sheetdb-form" class="booking-form" action="VOTRE_LIEN_API_SHEETDB_ICI" method="POST">
+                <label>Nom Complet</label>
+                <input type="text" name="data[Nom]" placeholder="Ex: Marie Dupont" required>
+                
+                <label>Téléphone</label>
+                <input type="tel" name="data[Telephone]" placeholder="06 00 00 00 00" required>
+                
+                <label>Prestation Souhaitée</label>
+                <select name="data[Prestation]" required>
+                    <option value="Balayage">Balayage / Ombré Hair</option>
+                    <option value="Coupe-Brushing">Coupe & Brushing</option>
+                    <option value="Couleur">Coloration Racine</option>
+                </select>
+
+                <button type="submit" class="btn-gold" style="width: 100%; cursor: pointer;">1. Envoyer ma demande</button>
+            </form>
+
+            <div class="paypal-block">
+                <p><strong>2. Sécurisez votre créneau</strong></p>
+                <p style="font-size: 13px; color: #aaa; margin-top: 5px;">Versez l'acompte forfaitaire de 20€ pour valider le RDV :</p>
+                <a href="https://www.paypal.me/VOTRE_PSEUDO_PAYPAL/20" target="_blank" class="btn-paypal">
+                    <i>p</i> Payer l'acompte via PayPal (20€)
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p style="font-size: 18px; color: #fff; margin-bottom: 20px;">CELI HAIR</p>
+        <p style="margin-bottom: 10px;">📍 1 rue alfred curtel, Marseille, France 13010</p>
+        <p style="margin-bottom: 30px;">📸 Instagram : <a href="https://www.instagram.com/celi__hair/" target="_blank">@celi__hair</a></p>
+        <p>&copy; 2026 Celi Hair. Conçu pour l'excellence.</p>
+    </footer>
+
+    <script>
+        var form = document.getElementById('sheetdb-form');
+        form.addEventListener("submit", e => {
+          e.preventDefault();
+          fetch(form.action, {
+              method : "POST",
+              body: new FormData(document.getElementById("sheetdb-form")),
+          }).then(
+              response => response.json()
+          ).then((html) => {
+            alert('Votre demande de RDV a bien été enregistrée ! N\'oubliez pas de régler l\'acompte PayPal ci-dessous pour validation.')
+          });
+        });
+    </script>
+
+</body>
+</html>
