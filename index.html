@@ -351,22 +351,27 @@
         <h2 class="section-title"><span>Privé</span>Demande de Réservation</h2>
         
         <div class="booking-container">
-            <form id="sheetdb-form" class="booking-form" action="https://sheetdb.io/api/v1/19ojo6dndhnif" method="POST">
-                <label>Nom Complet</label>
-                <input type="text" name="data[Nom]" placeholder="Ex: Marie Dupont" required>
-                
-                <label>Téléphone</label>
-                <input type="tel" name="data[Telephone]" placeholder="06 00 00 00 00" required>
-                
-                <label>Prestation Souhaitée</label>
-                <select name="data[Prestation]" required>
-                    <option value="Balayage">Balayage / Ombré Hair</option>
-                    <option value="Coupe-Brushing">Coupe & Brushing</option>
-                    <option value="Couleur">Coloration Racine</option>
-                </select>
+<form id="sheetdb-form" class="booking-form" action="https://sheetdb.io/api/v1/19ojo6dndhnif" method="POST">
+    <label>Nom Complet</label>
+    <input type="text" name="data[Nom]" placeholder="Ex: Marie Dupont" required>
+    
+    <label>Téléphone</label>
+    <input type="tel" name="data[Telephone]" placeholder="06 00 00 00 00" required>
+    
+    <label>Date souhaitée</label>
+    <input type="date" id="dateInput" name="data[Date]" required style="width: 100%; padding: 12px; margin-top: 5px; margin-bottom: 15px; border: 1px solid #444; background: #222; color: #fff; border-radius: 4px;">
+    
+    <input type="hidden" id="moisInput" name="data[Mois]">
+    
+    <label>Prestation Souhaitée</label>
+    <select name="data[Prestation]" required>
+        <option value="Balayage">Balayage / Ombré Hair</option>
+        <option value="Coupe-Brushing">Coupe & Brushing</option>
+        <option value="Couleur">Coloration</option>
+    </select>
 
-                <button type="submit" class="btn-gold" style="width: 100%; cursor: pointer;">1. Envoyer ma demande</button>
-            </form>
+    <button type="submit" class="btn-gold" style="width: 100%; cursor: pointer;">1. Envoyer ma demande</button>
+</form>
 
             <div class="paypal-block">
                 <p><strong>2. Sécurisez votre créneau</strong></p>
@@ -393,6 +398,16 @@
     </div>
 
    <script>
+
+       // Script pour extraire automatiquement le mois en texte (ex: "Janvier") quand la cliente choisit une date
+    document.getElementById('dateInput').addEventListener('change', function() {
+        const date = new Date(this.value);
+        const moisNoms = ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"];
+        if (!isNaN(date.getTime())) {
+            document.getElementById('moisInput').value = moisNoms[date.getMonth()];
+        }
+    });
+       
         var form = document.getElementById('sheetdb-form');
         var overlay = document.getElementById('overlay');
         var customAlert = document.getElementById('customAlert');
